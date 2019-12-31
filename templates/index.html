@@ -1,20 +1,29 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Korean Baby Names{% endblock %}</h1>
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> -->
     <!-- <link rel="stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
     <link rel="stylesheet" type = "text/css" href = "{{ url_for('static',filename='css/results.css') }}"/> -->
 
-    <title>Korean Baby Names</title>
-</head>
-<body>
-  <p>hello, {{ name }} who is a {{ gender }}</p>
+    <!-- <title>Korean Baby Names</title>
+</head> -->
+{% block content %}
   <form action="/" method="get">
-    Name<br>
+    What is the name?<br>
     <input type='text' name="name" value=""><br>
     Are you a female or male?<br>
     <input type="radio" name="gender" value="female" checked> Female<br>
     <input type="radio" name="gender" value="male"> Male<br>
     <input type="submit" value="Submit">
   </form>
-</body>
+  <ul>
+    {% for name in results %}
+      <li>{{ name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
